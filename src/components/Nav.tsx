@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import { useScrollProgress, type SectionId } from '@/hooks/useScrollProgress';
 import { easeOut, useReducedMotion } from '@/lib/motion';
 
@@ -85,6 +85,18 @@ export default function Nav() {
               </a>
             );
           })}
+
+          {/* Resume Download in Header */}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="ml-2 inline-flex items-center gap-1 rounded-full border border-line bg-bg-soft/40 px-4 py-2 text-sm font-medium text-ink-muted transition-colors hover:border-line-strong hover:text-ink"
+          >
+            <FileText size={13} />
+            CV
+          </a>
+
           <a
             href="#contact"
             className="ml-2 inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent-soft px-4 py-2 text-sm font-medium text-accent transition-all hover:border-accent/50 hover:bg-accent/20"
@@ -126,6 +138,19 @@ export default function Nav() {
                   {l.label}
                 </a>
               ))}
+              
+              {/* Resume download in mobile navigation */}
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setOpen(false)}
+                className="mt-1 flex items-center justify-center gap-1.5 rounded-xl border border-line bg-bg-soft/50 px-4 py-3 text-sm font-medium text-ink"
+              >
+                <FileText size={14} />
+                Download CV (PDF)
+              </a>
+
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
