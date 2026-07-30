@@ -1,16 +1,18 @@
-import { useRef, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import {
   motion,
   useMotionValue,
   useSpring,
   useTransform,
 } from 'framer-motion';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Play, FileText } from 'lucide-react';
 import { easeOut, useReducedMotion } from '@/lib/motion';
+import VoiceDemoModal from './VoiceDemoModal';
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement | null>(null);
   const reduced = useReducedMotion();
+  const [isVoiceOpen, setIsVoiceOpen] = useState(false);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -98,18 +100,45 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easeOut, delay: 0.8 }}
-          className="mt-12 flex flex-col items-center gap-3 sm:flex-row"
+          className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row flex-wrap"
         >
-          <MagneticButton href="#work" variant="primary">
+          {/* Primary Voice AI CTA */}
+          <button
+            onClick={() => setIsVoiceOpen(true)}
+            className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-bg shadow-[0_4px_24px_rgba(94,173,166,0.3)] transition-all hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(94,173,166,0.45)] active:scale-[0.98]"
+          >
+            <Play size={15} className="fill-bg" />
+            Listen to Voice Demo
+          </button>
+
+          {/* View work button */}
+          <MagneticButton href="#work" variant="secondary">
             View work
             <ArrowDown size={16} className="transition-transform group-hover:translate-y-0.5" />
           </MagneticButton>
+
+          {/* Get in touch button */}
           <MagneticButton href="#contact" variant="secondary">
             Get in touch
             <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </MagneticButton>
+
+          {/* Resume Quick Access Link */}
+          <motion.a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            whileTap={{ scale: 0.97 }}
+            className="group inline-flex items-center gap-2 rounded-full border border-line bg-bg-soft/40 px-6 py-3 text-sm font-medium text-ink-muted backdrop-blur-sm transition-colors hover:border-line-strong hover:text-ink"
+          >
+            <FileText size={15} className="text-ink-faint transition-colors group-hover:text-ink-muted" />
+            Resume
+          </motion.a>
         </motion.div>
       </div>
+
+      {/* Voice Demo Player Modal */}
+      <VoiceDemoModal isOpen={isVoiceOpen} onClose={() => setIsVoiceOpen(false)} />
     </section>
   );
 }
@@ -148,7 +177,7 @@ function MagneticButton({
   const styles =
     variant === 'primary'
       ? 'bg-ink text-bg hover:shadow-[0_8px_30px_-8px_rgba(245,245,245,0.4)]'
-      : 'border border-accent/30 bg-accent-soft text-accent backdrop-blur-sm hover:border-accent/50 hover:bg-accent/20';
+      : 'border border-line bg-bg-soft/40 text-ink-soft backdrop-blur-sm hover:border-line-strong hover:text-ink';
 
   return (
     <motion.a
