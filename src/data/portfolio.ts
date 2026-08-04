@@ -6,6 +6,9 @@ export type Project = {
   details: string;
   stack: string[];
   status: 'Flagship' | 'Active' | 'Shipping' | 'Research';
+  accent: string;
+
+  accentAlt?: string;
   href: string;
   index: string;
   metrics?: string[];
@@ -27,6 +30,8 @@ export const projects: Project[] = [
       'A full voice-AI SaaS: human-quality Bangla receptionists that answer, route, and qualify calls 24/7, plus campaign broadcasting and a live operations dashboard. It handles high concurrent call volumes and leverages low-latency WebSocket streaming.',
     stack: ['Next.js', 'FastAPI', 'Retell AI', 'ElevenLabs', 'Supabase', 'Prisma'],
     status: 'Flagship',
+    accent: '#5eada6',
+    accentAlt: '#73cbc2',
     href: 'https://github.com/zunaidhasan/portfolio-dark', // custom repo or live link
     index: '01',
     metrics: [
@@ -54,6 +59,9 @@ export const projects: Project[] = [
       'A RAG pipeline over Bangla legal text with a conversational interface, turning dense legal language into clear, actionable guidance for everyday people. It resolves semantic nuances unique to Bangladeshi legal drafts and courts.',
     stack: ['Python', 'Claude API', 'OpenRouter', 'RAG', 'Streamlit'],
     status: 'Active',
+    accent: '#8b7cf6',
+ 
+    accentAlt: '#a99bff',
     href: 'https://github.com/zunaidhasan',
     index: '02',
     metrics: [
@@ -80,6 +88,9 @@ export const projects: Project[] = [
       'Farmers send a location, get back a clear Bangla report with crop-specific recommendations. No app downloads, no complicated registration forms, just a single chat message.',
     stack: ['Python', 'ML', 'RAG', 'WhatsApp API', 'Satellite Imagery'],
     status: 'Shipping',
+    accent: '#7cc576',
+ 
+    accentAlt: '#9bd98f',
     href: 'https://github.com/zunaidhasan',
     index: '03',
     metrics: [
@@ -110,6 +121,9 @@ export const projects: Project[] = [
       'A workflow automation tool that reads incoming project briefs, drafts a pitch matching the freelancer\'s specific voice, historical wins, and skills, and scores the conversion likelihood.',
     stack: ['Python', 'LLM Pipelines', 'RAG', 'Automation'],
     status: 'Active',
+    accent: '#e8b04b',
+ 
+    accentAlt: '#f2c76e',
     href: 'https://github.com/zunaidhasan',
     index: '04',
     metrics: [
@@ -136,6 +150,9 @@ export const projects: Project[] = [
       'Built to make pharmaceutical information approachable: scan or search a medicine, get clear usage, side effects, and interaction context in return. Supports handwritten prescription analysis with OCR pipelines.',
     stack: ['React', 'TypeScript', 'LLM', 'Tailwind'],
     status: 'Shipping',
+    accent: '#66a7f0',
+ 
+    accentAlt: '#8cc0f7',
     href: 'https://github.com/zunaidhasan',
     index: '05',
     metrics: [
